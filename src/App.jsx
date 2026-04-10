@@ -576,13 +576,13 @@ export default function App(){
   const Parents=()=>{
     const isPl=lang==="pl";
     const pastExams=[
-      {year:2025,label:isPl?"Egzamin 2025 — Maj":"Exam 2025 — May",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2025-maj/"},
-      {year:2024,label:isPl?"Egzamin 2024 — Maj":"Exam 2024 — May",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2024-maj/"},
-      {year:2023,label:isPl?"Egzamin 2023 — Maj":"Exam 2023 — May",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2023-maj/"},
-      {year:2022,label:isPl?"Egzamin 2022 — Maj":"Exam 2022 — May",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2022-maj/"},
-      {year:2021,label:isPl?"Egzamin 2021 — Maj":"Exam 2021 — May",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2021-maj/"},
-      {year:2020,label:isPl?"Egzamin 2020 — Czerwiec":"Exam 2020 — June",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2020-czerwiec/"},
-      {year:2019,label:isPl?"Egzamin 2019 — Kwiecień":"Exam 2019 — April",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2019-kwiecien/"},
+      {year:2025,label:isPl?"Egzamin 2025 — Maj (PDF)":"Exam 2025 — May (PDF)",url:"https://cke.gov.pl/images/_EGZAMIN_OSMOKLASISTY/Arkusze-egzaminacyjne/2025/matematyka/OMAP-100-X-2505-zeszyt-zadan.pdf"},
+      {year:2024,label:isPl?"Egzamin 2024 — Maj (PDF)":"Exam 2024 — May (PDF)",url:"https://cke.gov.pl/images/_EGZAMIN_OSMOKLASISTY/Arkusze-egzaminacyjne/2024/matematyka/OMAP-100-X-2405-zeszyt-zadan.pdf"},
+      {year:2023,label:isPl?"Egzamin 2023 — Maj (PDF)":"Exam 2023 — May (PDF)",url:"https://cke.gov.pl/images/_EGZAMIN_OSMOKLASISTY/Arkusze-egzaminacyjne/2023/matematyka/OMAP-100-2305.pdf"},
+      {year:2022,label:isPl?"Egzamin 2022 — Maj (PDF)":"Exam 2022 — May (PDF)",url:"https://cke.gov.pl/images/_EGZAMIN_OSMOKLASISTY/Arkusze-egzaminacyjne/2022/matematyka/OMAP-100-2205.pdf"},
+      {year:2021,label:isPl?"Egzamin 2021 — Maj (PDF)":"Exam 2021 — May (PDF)",url:"https://cke.gov.pl/images/_EGZAMIN_OSMOKLASISTY/Arkusze-egzaminacyjne/2021/matematyka/OMAP-100-X-2105.pdf"},
+      {year:2020,label:isPl?"Egzamin 2020 — Czerwiec (PDF)":"Exam 2020 — June (PDF)",url:"https://cke.gov.pl/images/_EGZAMIN_OSMOKLASISTY/Arkusze-egzaminacyjne/2020/matematyka/OMAP-100-2004.pdf"},
+      {year:2019,label:isPl?"Egzamin 2019 — Kwiecień (PDF)":"Exam 2019 — April (PDF)",url:"https://cke.gov.pl/images/_EGZAMIN_OSMOKLASISTY/Arkusze-egzaminacyjne/2019/matematyka/Arkusz_OMAP-100-1904.pdf"},
     ];
     return(<div>
       <div style={{textAlign:"center",padding:"16px 0 12px"}}><div style={{fontFamily:PX,fontSize:10,color:"#4CAF50",textShadow:"1px 1px 0 #000"}}>{isPl?"INFORMACJE O APLIKACJI":"APP INFORMATION"}</div></div>
@@ -636,7 +636,7 @@ export default function App(){
             <div style={{fontFamily:PX,fontSize:12,color:"#4FC3F7",minWidth:40}}>{exam.year}</div>
             <div style={{flex:1}}>
               <div style={{fontFamily:UI,fontSize:14,color:"#ccc"}}>{exam.label}</div>
-              <div style={{fontFamily:UI,fontSize:11,color:"#666"}}>arkusze.pl ↗</div>
+              <div style={{fontFamily:UI,fontSize:11,color:"#666"}}>cke.gov.pl ↗</div>
             </div>
             <div style={{fontSize:16}}>📄</div>
           </a>
