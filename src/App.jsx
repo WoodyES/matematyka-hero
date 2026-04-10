@@ -222,7 +222,7 @@ const T={
     achDescs:{first_kill:"Pokonaj pierwszego moba",streak_3:"3 trafienia z rzędu",streak_5:"5 trafień z rzędu",streak_10:"10 trafień z rzędu",ten_kills:"10 poprawnych",fifty_kills:"50 poprawnych",hundred_kills:"100 poprawnych",biome_clear:"80%+ w jednym biomie",explorer:"Odwiedź wszystkie biomy",boss_slayer:"Pokonaj Ender Smoka",veteran:"5 ukończonych sesji",perfect_boss:"100% z bossem"},
     biomeNames:{arytmetyka:"Kamienny Kanion",algebra:"Szmaragdowy Las",geometria:"Lodowa Twierdza",dane:"Pustynna Świątynia",procenty:"Wulkan Ognia",funkcje:"Kryształowa Jaskinia"},
     mobNames:{arytmetyka:"Golem",algebra:"Zombie",geometria:"Szkielet",dane:"Mumia",procenty:"Blaze",funkcje:"Ender"},
-    bossLocked:"Ukończ wszystkie biomy (80%+) aby odblokować!",bossLevelLabel:"POZIOM SMOKA",cleared:"OCZYSZCZONY",degradeWarning:"Nie grałeś {n} dni! {c} pytań wymaga powtórki!",parentTab:"RODZICE",
+    bossLocked:"Ukończ wszystkie biomy (80%+) aby odblokować!",bossLevelLabel:"POZIOM SMOKA",cleared:"OCZYSZCZONY",degradeWarning:"Nie grałeś {n} dni! {c} pytań wymaga powtórki!",parentTab:"INFO",
     shop:"▸ SKLEP",shopShield:"🛡️ Tarcza",shopShieldDesc:"-50% obrażeń (1 walka)",shopLife:"❤️ Ekstra życie",shopLifeDesc:"Odrodzenie z 30HP",shopFreeze:"❄️ Zamrożenie",shopFreezeDesc:"Brak degradacji 3 dni",shopXP:"⭐ Boost XP",shopXPDesc:"Podwójne XP (1 walka)",shopBuy:"KUP",shopOwned:"MAM",
   },
   en:{
@@ -572,11 +572,20 @@ export default function App(){
     </div>}
   </div>);
 
-  // ═══ PARENTS INFO ═══
+  // ═══ APP INFO ═══
   const Parents=()=>{
     const isPl=lang==="pl";
+    const pastExams=[
+      {year:2025,label:isPl?"Egzamin 2025 — Maj":"Exam 2025 — May",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2025-maj/"},
+      {year:2024,label:isPl?"Egzamin 2024 — Maj":"Exam 2024 — May",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2024-maj/"},
+      {year:2023,label:isPl?"Egzamin 2023 — Maj":"Exam 2023 — May",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2023-maj/"},
+      {year:2022,label:isPl?"Egzamin 2022 — Maj":"Exam 2022 — May",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2022-maj/"},
+      {year:2021,label:isPl?"Egzamin 2021 — Maj":"Exam 2021 — May",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2021-maj/"},
+      {year:2020,label:isPl?"Egzamin 2020 — Czerwiec":"Exam 2020 — June",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2020-czerwiec/"},
+      {year:2019,label:isPl?"Egzamin 2019 — Kwiecień":"Exam 2019 — April",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka-2019-kwiecien/"},
+    ];
     return(<div>
-      <div style={{textAlign:"center",padding:"16px 0 12px"}}><div style={{fontFamily:PX,fontSize:10,color:"#4CAF50",textShadow:"1px 1px 0 #000"}}>{isPl?"DLA RODZICÓW":"FOR PARENTS"}</div></div>
+      <div style={{textAlign:"center",padding:"16px 0 12px"}}><div style={{fontFamily:PX,fontSize:10,color:"#4CAF50",textShadow:"1px 1px 0 #000"}}>{isPl?"INFORMACJE O APLIKACJI":"APP INFORMATION"}</div></div>
       <div style={{background:"#111",border:"3px solid #4CAF50",padding:16,marginBottom:12}}>
         <div style={{fontFamily:PX,fontSize:8,color:"#4CAF50",marginBottom:10}}>{isPl?"🎮 Co to jest?":"🎮 What is this?"}</div>
         <div style={{fontFamily:UI,fontSize:14,color:"#ccc",lineHeight:1.7}}>
@@ -608,15 +617,33 @@ export default function App(){
             ?"Pytania są oparte na oficjalnych arkuszach egzaminacyjnych CKE (Centralnej Komisji Egzaminacyjnej) z lat 2019-2025."
             :"Questions are based on official CKE (Central Examination Board) exam papers from 2019-2025."}
         </div>
-        {[{label:"CKE — oficjalna strona",url:"https://cke.gov.pl"},{label:"Arkusze egzaminacyjne",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka/"},{label:"Szalone Liczby — zadania",url:"https://szaloneliczby.pl"}].map(link=>(
-          <div key={link.url} style={{background:"#1a1a1a",border:"2px solid #333",padding:"8px 12px",marginBottom:4}}>
-            <div style={{fontFamily:UI,fontSize:13,color:"#4FC3F7"}}>{link.label}</div>
+        {[{label:"CKE — "+(isPl?"oficjalna strona":"official site"),url:"https://cke.gov.pl"},{label:isPl?"Arkusze egzaminacyjne":"Exam papers archive",url:"https://arkusze.pl/egzamin-osmoklasisty-matematyka/"},{label:"Szalone Liczby — "+(isPl?"zadania":"exercises"),url:"https://szaloneliczby.pl"}].map(link=>(
+          <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" style={{display:"block",background:"#1a1a1a",border:"2px solid #333",padding:"8px 12px",marginBottom:4,textDecoration:"none"}}>
+            <div style={{fontFamily:UI,fontSize:13,color:"#4FC3F7"}}>{link.label} ↗</div>
             <div style={{fontFamily:UI,fontSize:11,color:"#666"}}>{link.url}</div>
-          </div>
+          </a>
+        ))}
+      </div>
+      <div style={{background:"#111",border:"3px solid #4FC3F7",padding:16,marginBottom:12}}>
+        <div style={{fontFamily:PX,fontSize:8,color:"#4FC3F7",marginBottom:10}}>{isPl?"📝 Arkusze egzaminacyjne (2019–2025)":"📝 Past exam papers (2019–2025)"}</div>
+        <div style={{fontFamily:UI,fontSize:13,color:"#888",marginBottom:12}}>
+          {isPl
+            ?"Poniższe arkusze zostały wykorzystane przy tworzeniu pytań w grze. Kliknij aby otworzyć arkusz."
+            :"The following past papers were reviewed when creating the questions in this app. Tap to open."}
+        </div>
+        {pastExams.map(exam=>(
+          <a key={exam.year} href={exam.url} target="_blank" rel="noopener noreferrer" style={{display:"flex",alignItems:"center",gap:10,background:"#1a1a1a",border:"2px solid #333",padding:"10px 12px",marginBottom:4,textDecoration:"none",cursor:"pointer"}}>
+            <div style={{fontFamily:PX,fontSize:12,color:"#4FC3F7",minWidth:40}}>{exam.year}</div>
+            <div style={{flex:1}}>
+              <div style={{fontFamily:UI,fontSize:14,color:"#ccc"}}>{exam.label}</div>
+              <div style={{fontFamily:UI,fontSize:11,color:"#666"}}>arkusze.pl ↗</div>
+            </div>
+            <div style={{fontSize:16}}>📄</div>
+          </a>
         ))}
       </div>
       <div style={{background:"#111",border:"3px solid #333",padding:16}}>
-        <div style={{fontFamily:PX,fontSize:8,color:"#888",marginBottom:10}}>{isPl?"📊 Postęp dziecka":"📊 Your child's progress"}</div>
+        <div style={{fontFamily:PX,fontSize:8,color:"#888",marginBottom:10}}>{isPl?"📊 Postęp":"📊 Progress"}</div>
         <div style={{fontFamily:UI,fontSize:14,color:"#ccc",lineHeight:1.7}}>
           {isPl?"Gotowość do egzaminu":"Exam readiness"}: <span style={{fontFamily:PX,color:readiness>=70?"#4CAF50":readiness>=40?"#FFC107":"#F44336"}}>{readiness}%</span><br/>
           {isPl?"Poprawne odpowiedzi":"Correct answers"}: <span style={{fontFamily:PX,color:"#fff"}}>{stats.totalCorrect}/{stats.totalAttempted}</span><br/>
@@ -635,7 +662,7 @@ export default function App(){
     {ach&&<div style={{position:"fixed",top:16,left:"50%",transform:"translateX(-50%)",background:"#1a1a0a",border:"3px solid #FFC107",padding:"10px 20px",fontFamily:PX,fontSize:8,color:"#FFC107",zIndex:1000,display:"flex",alignItems:"center",gap:10,animation:"slideDown 0.4s ease, achievePulse 1s ease infinite",boxShadow:"0 0 20px #FFC10744"}}><span style={{fontSize:20}}>{ach.icon}</span><span>{t.achNames?.[ach.id]||ach.name}</span></div>}
     <div style={{maxWidth:480,margin:"0 auto",padding:"0 16px 90px"}}><S/></div>
     {!["combat","formulas"].includes(screen)&&<div style={{position:"fixed",bottom:0,left:0,right:0,zIndex:100,background:"#0a0a0a",borderTop:"3px solid #222",display:"flex"}}>
-      {[{id:"home",icon:"🗺️",label:t.map},{id:"settings",icon:"⚙️",label:t.settingsTab},{id:"parents",icon:"👨‍👩‍👦",label:t.parentTab}].map(tab=>(<button key={tab.id} onClick={()=>setScreen(tab.id)} style={{flex:1,background:screen===tab.id?"#1a1a0a":"transparent",border:"none",borderTop:screen===tab.id?"3px solid #4CAF50":"3px solid transparent",padding:"10px 0 8px",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:3}}><span style={{fontSize:18}}>{tab.icon}</span><span style={{fontFamily:PX,fontSize:6,color:screen===tab.id?"#4CAF50":"#444"}}>{tab.label}</span></button>))}
+      {[{id:"home",icon:"🗺️",label:t.map},{id:"settings",icon:"⚙️",label:t.settingsTab},{id:"parents",icon:"ℹ️",label:t.parentTab}].map(tab=>(<button key={tab.id} onClick={()=>setScreen(tab.id)} style={{flex:1,background:screen===tab.id?"#1a1a0a":"transparent",border:"none",borderTop:screen===tab.id?"3px solid #4CAF50":"3px solid transparent",padding:"10px 0 8px",cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:3}}><span style={{fontSize:18}}>{tab.icon}</span><span style={{fontFamily:PX,fontSize:6,color:screen===tab.id?"#4CAF50":"#444"}}>{tab.label}</span></button>))}
     </div>}
   </div>);
 }
